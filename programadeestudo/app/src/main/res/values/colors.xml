@@ -3,4 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name='roxi'>#A6537A</color>
+    <color name='azulzi'>#46A6A6</color>
+    <color name='laranji'>#D9831A</color>
+    <color name='laranjo'>#BF6415</color>
+    <color name='vermelhi'>#A62B1F</color>
 </resources>
