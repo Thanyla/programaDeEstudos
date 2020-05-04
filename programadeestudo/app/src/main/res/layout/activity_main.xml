@@ -17,16 +17,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="2dp"
         >
+
 
         <TextView
             android:id="@+id/textViewMatter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/matterName"
+            android:text="@string/matterSummary"
             android:textSize="20dp"
             android:textStyle="bold|italic" />
 
@@ -34,13 +35,13 @@
             android:id="@+id/editTextMatter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            android:inputType="textMultiLine" />
 
         <TextView
             android:id="@+id/textViewAbstract"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/matterAbstract"
+            android:text="@string/matterName"
             android:textSize="20dp"
             android:textStyle="bold|italic" />
 
@@ -50,42 +51,39 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine" />
 
-        <TextView
-            android:id="@+id/textViewSummary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/matterSummary"
-            android:textSize="20dp"
-            android:textStyle="bold|italic" />
 
-        <EditText
-            android:id="@+id/editTextSummary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine" />
-
-        <TextView
-            android:id="@+id/textViewNote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/matterNote"
-            android:textSize="20dp"
-            android:textStyle="bold|italic" />
-
-        <EditText
-            android:id="@+id/editTextNote"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine" />
-
-        <Button
-            android:id="@+id/buttonSalve"
-            style="@style/Widget.AppCompat.ImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/buttonSalve"
-            android:textAlignment="center" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp">
+        <TextView
+            android:id="@+id/textHour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hourStart"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
+
+        <EditText
+            android:id="@+id/editTextHour"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="time" />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/buttonSalve"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/buttonSalve"
+        android:textAlignment="center" />
 
 </LinearLayout>

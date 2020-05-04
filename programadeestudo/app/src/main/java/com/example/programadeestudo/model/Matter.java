@@ -1,24 +1,20 @@
 package com.example.programadeestudo.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Matter {
+public class Matter implements Serializable {
     private String nameMatter;
-    private String hourAlarm;
     private String summary;
+    private String hourAlarm;
 
-    public Matter(String nameMatter, String hourAlarm, String summary) {
+    public Matter() {
+    }
+
+    public Matter(String nameMatter, String summary, String hourAlarm) {
         this.nameMatter = nameMatter;
-        this.hourAlarm = hourAlarm;
         this.summary = summary;
-    }
-
-    public String getNameMatter() {
-        return nameMatter;
-    }
-
-    public void setNameMatter(String nameMatter) {
-        this.nameMatter = nameMatter;
+        this.hourAlarm = hourAlarm;
     }
 
     public String getHourAlarm() {
@@ -27,6 +23,14 @@ public class Matter {
 
     public void setHourAlarm(String hourAlarm) {
         this.hourAlarm = hourAlarm;
+    }
+
+    public String getNameMatter() {
+        return nameMatter;
+    }
+
+    public void setNameMatter(String nameMatter) {
+        this.nameMatter = nameMatter;
     }
 
     public String getSummary() {

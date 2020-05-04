@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Programa de estudo</string>
     <string name="matterName">Conteúdo</string>
-    <string name="matterAbstract">"Síntese"</string>
-    <string name="matterSummary">Resumo</string>
+    <string name="matterAbstract">"Conteúdo"</string>
+    <string name="matterSummary">Matéria</string>
     <string name="matterNote">Anotação</string>
     <string name="buttonSalve">Adicionar</string>
+    <string name="hourStart">Notificar ás </string>
+    <string name="hourFinal">" ás"</string>
 </resources>
