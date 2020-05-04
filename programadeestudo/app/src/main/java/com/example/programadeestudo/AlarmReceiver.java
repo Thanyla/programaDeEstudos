@@ -8,7 +8,6 @@ import android.widget.Toast;
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Toast.makeText(context, "Hora de Estudar", Toast.LENGTH_LONG).show();
-        Intent i = new Intent(context, DetailsActivity.class);
+        Toast.makeText(context, "Alarme cadastrado", Toast.LENGTH_LONG).show();
     }
 }

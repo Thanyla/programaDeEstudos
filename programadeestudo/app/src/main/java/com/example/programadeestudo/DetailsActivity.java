@@ -15,13 +15,11 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Bundle extras = getIntent().getExtras();
         setContentView(R.layout.activity_details);
         Matter matter = (Matter) getIntent().getSerializableExtra("matter");
 
         textViewMatter = findViewById(R.id.textViewEstudar);
         textViewMatter.setText(matter.getNameMatter());
 
-        //System.out.println(matter.getNameMatter());
     }
 }
