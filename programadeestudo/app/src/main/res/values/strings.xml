@@ -7,4 +7,5 @@
     <string name="buttonSalve">Adicionar</string>
     <string name="hourStart">Notificar ás </string>
     <string name="hourFinal">" ás"</string>
+    <string name="hour">Definir alarme</string>
 </resources>

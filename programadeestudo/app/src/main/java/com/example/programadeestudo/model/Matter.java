@@ -6,23 +6,26 @@ import java.util.List;
 public class Matter implements Serializable {
     private String nameMatter;
     private String summary;
-    private String hourAlarm;
+    private int hourAlarm;
+    private int minuteAlarm;
 
     public Matter() {
     }
 
-    public Matter(String nameMatter, String summary, String hourAlarm) {
-        this.nameMatter = nameMatter;
-        this.summary = summary;
-        this.hourAlarm = hourAlarm;
-    }
-
-    public String getHourAlarm() {
+    public int getHourAlarm() {
         return hourAlarm;
     }
 
-    public void setHourAlarm(String hourAlarm) {
+    public void setHourAlarm(int hourAlarm) {
         this.hourAlarm = hourAlarm;
+    }
+
+    public int getMinuteAlarm() {
+        return minuteAlarm;
+    }
+
+    public void setMinuteAlarm(int minuteAlarm) {
+        this.minuteAlarm = minuteAlarm;
     }
 
     public String getNameMatter() {

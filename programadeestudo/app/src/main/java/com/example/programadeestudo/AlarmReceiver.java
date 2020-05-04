@@ -9,5 +9,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Toast.makeText(context, "Alarme cadastrado", Toast.LENGTH_LONG).show();
+        MainActivity mainActivity  = (MainActivity) context;
+        mainActivity.gerar();
     }
 }
