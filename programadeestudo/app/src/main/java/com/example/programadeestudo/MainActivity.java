@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private Button buttonSalve;
     private AlarmManager alarmManager;
     private PendingIntent pendingIntent;
-    private static final String CHANNELID = "2";
-    private int notificationId = 1;
     private Matter matter = new Matter();
 
     @Override
@@ -62,16 +60,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             public void onClick(View view) {
                 matter.setNameMatter(editTextMatter.getText().toString());
                 matter.setSummary(editTextAbstract.getText().toString());
-                criarCanalNotificacao();
                 disparar();
+                Toast.makeText(getApplicationContext(), "Alarme cadastrado", Toast.LENGTH_LONG).show();
+
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //disparar();
     }
 
     @Override
@@ -82,11 +75,17 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     private void disparar() {
-        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent i = new Intent(this, AlarmReceiver.class);
+        i.putExtra("teste", matter);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
         pendingIntent = PendingIntent.getBroadcast(
                 getApplicationContext(),
-                0, i, 0);
+                0,
+                i,
+                0);
+        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
@@ -96,38 +95,5 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         alarmManager.set(AlarmManager.RTC_WAKEUP,
                 calendar.getTimeInMillis()+2,
                 pendingIntent);
-        //gerar();
-    }
-
-    public void gerar() {
-        Intent i = new Intent(this, DetailsActivity.class);
-        i.putExtra("matter", matter);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addNextIntentWithParentStack(i);
-        PendingIntent pi = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        Notification builder = new NotificationCompat.Builder(this, CHANNELID)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("Hora de estudar")
-                .setContentText("Estudar sobre "+ editTextAbstract.getText().toString())
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setContentIntent(pi)
-                .build();
-
-        NotificationManagerCompat nm = NotificationManagerCompat.from(this);
-        nm.notify(notificationId, builder);
-    }//method
-
-    private void criarCanalNotificacao() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "canal2";
-            String description = "Descrição";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(CHANNELID, name, importance);
-            channel.setDescription(description);
-            NotificationManager nm = getSystemService(NotificationManager.class);
-            nm.createNotificationChannel(channel);
-        }
     }
 }
