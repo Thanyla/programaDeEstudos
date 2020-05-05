@@ -16,16 +16,18 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_details);
-        Matter matter = (Matter) getIntent().getSerializableExtra("matter");
+
+        Bundle bundle = getIntent().getExtras();
+        Matter matter = (Matter) bundle.get("matter");
 
         textViewMatter = findViewById(R.id.textViewExibiMatter);
-        textViewMatter.setText(matter.getNameMatter());
+        textViewMatter.setText("Matéria: "+matter.getNameMatter());
 
         textViewAbstract = findViewById(R.id.textViewExibiAbstract);
-        textViewAbstract.setText(matter.getSummary());
+        textViewAbstract.setText("Conteúdo a ser estudado: "+matter.getSummary());
 
         textViewHour=findViewById(R.id.textViewExibirHour);
-        textViewHour.setText("Às "+matter.getHourAlarm()+":"+matter.getMinuteAlarm());
+        textViewHour.setText("Horario de estudo a partir de:  "+matter.getHourAlarm()+":"+matter.getMinuteAlarm());
 
     }
 }

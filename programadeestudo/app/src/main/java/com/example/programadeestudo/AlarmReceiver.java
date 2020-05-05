@@ -42,10 +42,22 @@ public class AlarmReceiver extends BroadcastReceiver{
 
         //Gerar Notificação
         Bundle bundle = intent.getExtras();
-        System.out.println(bundle.getParcelable("teste"));
+        //Matter matter = (Matter) bundle.getSerializable("teste");
+        Serializable matterName = bundle.getSerializable("matter").toString();
+        Serializable summary = bundle.getSerializable("summary").toString();
+        Serializable hour = bundle.getSerializable("hour").toString();
+        Serializable minute = bundle.getSerializable("minute").toString();
+
+        Matter matter = new Matter();
+        matter.setNameMatter(matterName.toString());
+        matter.setSummary(summary.toString());
+        matter.setHourAlarm(Integer.parseInt(hour.toString()));
+        matter.setMinuteAlarm(Integer.parseInt(minute.toString()));
+
+        System.out.println(matter.getNameMatter());
 
         Intent i = new Intent(context, DetailsActivity.class);
-        //i.putExtra("matter", matter);
+        i.putExtra("matter", matter);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addNextIntentWithParentStack(i);
@@ -54,7 +66,7 @@ public class AlarmReceiver extends BroadcastReceiver{
         Notification builder = new NotificationCompat.Builder(context, CHANNELID)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("Hora de estudar")
-                .setContentText("Estudar sobre "/*+matter.getSummary()*/)
+                .setContentText("Estudar sobre "+matter.getSummary())
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pi)
                 .build();
@@ -62,4 +74,5 @@ public class AlarmReceiver extends BroadcastReceiver{
         NotificationManagerCompat nm = NotificationManagerCompat.from(context);
         nm.notify(notificationId, builder);
     }
+
 }

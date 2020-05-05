@@ -12,6 +12,13 @@ public class Matter implements Serializable {
     public Matter() {
     }
 
+    public Matter(String nameMatter, String summary, int hourAlarm, int minuteAlarm) {
+        this.nameMatter = nameMatter;
+        this.summary = summary;
+        this.hourAlarm = hourAlarm;
+        this.minuteAlarm = minuteAlarm;
+    }
+
     public int getHourAlarm() {
         return hourAlarm;
     }

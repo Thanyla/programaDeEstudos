@@ -75,16 +75,19 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     private void disparar() {
-        Intent i = new Intent(this, AlarmReceiver.class);
-        i.putExtra("teste", matter);
+        Intent i = new Intent(getApplicationContext(), AlarmReceiver.class);
+        i.putExtra("matter", matter.getNameMatter());
+        i.putExtra("summary", matter.getSummary());
+        i.putExtra("hour", matter.getHourAlarm());
+        i.putExtra("minute", matter.getMinuteAlarm());
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                 | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         pendingIntent = PendingIntent.getBroadcast(
-                getApplicationContext(),
-                0,
+                this,
+                454587464,
                 i,
-                0);
+                PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         Calendar calendar = Calendar.getInstance();
